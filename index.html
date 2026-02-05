@@ -3,34 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SnowHubb.pl</title>
+  <title>SnowHubb.pl ❄️</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    body {
-      background: #fbf7e8;
-      color: #111;
-    }
+    body { background: #fbf7e8; color: #111; }
 
-    /* NAV */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
       background: #f6f1df;
-      border-bottom: 1px solid #e5dec8;
+      border-bottom: 2px solid #111;
     }
 
     nav a {
       text-decoration: none;
       color: #111;
-      font-weight: 600;
-      margin: 0 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    /* HERO */
     .hero {
       background: url('background.jpg') center/cover no-repeat;
       padding: 120px 20px;
@@ -42,117 +41,153 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.7);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
     .hero img {
       max-width: 420px;
       width: 90%;
       margin-bottom: 30px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     .play-btn {
       display: inline-block;
       background: #ef4444;
       color: #fff;
-      padding: 18px 36px;
-      border-radius: 12px;
-      font-size: 1.1rem;
+      padding: 18px 40px;
+      border-radius: 14px;
+      font-size: 1.2rem;
       font-weight: 800;
       text-decoration: none;
       box-shadow: 0 8px 0 #b91c1c;
     }
 
-    .play-btn:hover {
-      transform: translateY(2px);
-      box-shadow: 0 4px 0 #b91c1c;
-    }
-
-    /* COMMUNITY */
-    .community {
-      padding: 80px 20px;
-      text-align: center;
-    }
+    .community { padding: 80px 20px; text-align: center; }
 
     .community h2 {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       margin-bottom: 50px;
-      position: relative;
       display: inline-block;
+      position: relative;
     }
 
     .community h2::after {
       content: '';
       display: block;
       height: 6px;
-      width: 100%;
       background: #ef4444;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     .boxes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 25px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
 
     .box {
       background: #fff;
-      border: 2px solid #111;
-      border-radius: 14px;
-      padding: 25px;
-      font-weight: 600;
-    }
-
-    .players {
-      font-size: 2.5rem;
-      color: #22c55e;
-      margin-top: 10px;
-    }
-
-    footer {
+      border: 3px solid #111;
+      border-radius: 16px;
       padding: 30px;
-      text-align: center;
-      opacity: 0.6;
+      font-weight: 700;
+      transition: 0.3s;
     }
+
+    .players { font-size: 3rem; color: #22c55e; margin-top: 10px; }
+    .status { margin-top: 8px; font-weight: 600; }
+
+    iframe { border-radius: 12px; }
+
+    footer { margin-top: 80px; padding: 30px; text-align: center; opacity: 0.6; }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
-    <div>🛒 Sklep</div>
-    <div><strong>SNOWHUBB</strong></div>
-    <div>📜 Regulamin</div>
+    <a href="https://snowhubb.vishop.pl" target="_blank">🛒 Sklep</a>
+    <strong>SNOWHUBB</strong>
+    <a href="#">📜 Regulamin</a>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
       <img src="logo.png" alt="SnowHubb">
       <br>
-      <a href="#" class="play-btn">▶ ZAGRAJ Z NAMI!</a>
+      <a href="#" class="play-btn">▶ ZAGRAJ: snowhubb.pl</a>
     </div>
   </section>
 
+  <!-- COMMUNITY -->
   <section class="community">
     <h2>Dołącz do naszej społeczności!</h2>
 
     <div class="boxes">
-      <div class="box">💬 Discord</div>
-      <div class="box">📡 Liczba graczy:<div class="players">13</div></div>
-      <div class="box">🎵 TikTok</div>
+
+      <!-- DISCORD -->
+      <div class="box">
+        💬 Discord
+        <br><br>
+        <iframe src="https://discord.com/widget?id=SERVER_ID&theme=light" width="100%" height="200" allowtransparency="true" frameborder="0"></iframe>
+      </div>
+
+      <!-- MC STATUS -->
+      <div class="box">
+        📡 Status serwera
+        <div class="players" id="players">Ładowanie…</div>
+        <div class="status" id="status">Sprawdzanie…</div>
+        <small>Java • snowhubb.pl</small>
+      </div>
+
+      <!-- TIKTOK -->
+      <div class="box">
+        🎵 TikTok
+        <br><br>
+        <a href="https://tiktok.com" target="_blank" class="play-btn">Obserwuj</a>
+      </div>
+
     </div>
   </section>
 
   <footer>
-    © 2026 SnowHubb.pl
+    © 2026 SnowHubb.pl ❄️ Wszystkie prawa zastrzeżone
   </footer>
+
+  <!-- REAL MC API -->
+  <script>
+    fetch("https://api.mcsrvstat.us/2/snowhubb.pl")
+      .then(res => res.json())
+      .then(data => {
+        const playersEl = document.getElementById("players");
+        const statusEl = document.getElementById("status");
+
+        if (data.online) {
+          playersEl.textContent = data.players.online + " / " + data.players.max;
+          statusEl.textContent = "🟢 Serwer ONLINE";
+          statusEl.style.color = "green";
+        } else {
+          playersEl.textContent = "0";
+          statusEl.textContent = "🔴 Serwer OFFLINE";
+          statusEl.style.color = "red";
+        }
+      })
+      .catch(() => {
+        document.getElementById("players").textContent = "Błąd";
+        document.getElementById("status").textContent = "Nie można pobrać danych";
+      });
+  </script>
 
 </body>
 </html>
