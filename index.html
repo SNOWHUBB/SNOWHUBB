@@ -4,178 +4,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SnowHubb.pl</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
 
     body {
-      background: linear-gradient(135deg, #0f172a, #020617);
-      color: white;
-      min-height: 100vh;
+      background: #fbf7e8;
+      color: #111;
     }
 
-    header {
+    /* NAV */
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-    }
-
-    header img {
-      height: 60px;
+      padding: 15px 40px;
+      background: #f6f1df;
+      border-bottom: 1px solid #e5dec8;
     }
 
     nav a {
-      color: white;
       text-decoration: none;
-      margin-left: 25px;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 80px 40px;
-      gap: 40px;
-    }
-
-    .hero-text h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .hero-text p {
-      opacity: 0.8;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
-      color: white;
-      text-decoration: none;
+      color: #111;
       font-weight: 600;
-      transition: 0.3s;
-      box-shadow: 0 10px 30px rgba(56,189,248,0.4);
+      margin: 0 15px;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(56,189,248,0.6);
+    /* HERO */
+    .hero {
+      background: url('background.jpg') center/cover no-repeat;
+      padding: 120px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.65);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero img {
-      width: 100%;
       max-width: 420px;
-      margin: auto;
+      width: 90%;
+      margin-bottom: 30px;
+    }
+
+    .play-btn {
+      display: inline-block;
+      background: #ef4444;
+      color: #fff;
+      padding: 18px 36px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 8px 0 #b91c1c;
+    }
+
+    .play-btn:hover {
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 #b91c1c;
+    }
+
+    /* COMMUNITY */
+    .community {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .community h2 {
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .community h2::after {
+      content: '';
       display: block;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+      height: 6px;
+      width: 100%;
+      background: #ef4444;
+      margin-top: 10px;
     }
 
-    .features {
-      padding: 60px 40px;
+    .boxes {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: auto;
     }
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      padding: 30px;
-      border-radius: 24px;
-      backdrop-filter: blur(10px);
-      transition: 0.3s;
+    .box {
+      background: #fff;
+      border: 2px solid #111;
+      border-radius: 14px;
+      padding: 25px;
+      font-weight: 600;
     }
 
-    .card:hover {
-      transform: translateY(-8px);
-      background: rgba(56,189,248,0.1);
+    .players {
+      font-size: 2.5rem;
+      color: #22c55e;
+      margin-top: 10px;
     }
 
     footer {
-      text-align: center;
       padding: 30px;
+      text-align: center;
       opacity: 0.6;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <!-- Wgraj logo do pliku logo.png -->
-    <img src="logo.png" alt="SnowHubb Logo">
-
-    <nav>
-      <a href="#">Start</a>
-      <a href="#">O nas</a>
-      <a href="#">Serwer</a>
-      <a href="#">Kontakt</a>
-    </nav>
-  </header>
+  <nav>
+    <div>🛒 Sklep</div>
+    <div><strong>SNOWHUBB</strong></div>
+    <div>📜 Regulamin</div>
+  </nav>
 
   <section class="hero">
-    <div class="hero-text">
-      <h1>Witaj na SnowHubb.pl ❄️</h1>
-      <p>Najlepszy hub społeczności, serwerów i projektów gamingowych. Dołącz do naszej społeczności już dziś!</p>
-      <a href="#" class="btn">Dołącz teraz</a>
-    </div>
-
-    <div>
+    <div class="hero-content">
       <img src="logo.png" alt="SnowHubb">
+      <br>
+      <a href="#" class="play-btn">▶ ZAGRAJ Z NAMI!</a>
     </div>
   </section>
 
-  <section class="features">
-    <div class="card">
-      <h3>🌐 Społeczność</h3>
-      <p>Poznaj graczy, twórców i nowych znajomych.</p>
-    </div>
+  <section class="community">
+    <h2>Dołącz do naszej społeczności!</h2>
 
-    <div class="card">
-      <h3>🎮 Serwery</h3>
-      <p>Unikalne tryby gry i najlepsza zabawa online.</p>
-    </div>
-
-    <div class="card">
-      <h3>🚀 Projekty</h3>
-      <p>Tworzymy nowe rzeczy dla graczy.</p>
+    <div class="boxes">
+      <div class="box">💬 Discord</div>
+      <div class="box">📡 Liczba graczy:<div class="players">13</div></div>
+      <div class="box">🎵 TikTok</div>
     </div>
   </section>
 
   <footer>
-    © 2026 SnowHubb.pl — Wszelkie prawa zastrzeżone
+    © 2026 SnowHubb.pl
   </footer>
 
 </body>
